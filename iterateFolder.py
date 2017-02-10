@@ -13,10 +13,10 @@ def extractCloudsTime(dir, metadata):
     root = tree.getroot()
     Quality_Indicators =''
     
-    for Product_Info in root.find('Product_Info'): # Finds product info
+    for Product_Info in root.iter('Product_Info'): # Finds product info
         PST = Product_Info.find("PRODUCT_START_TIME").text #Start time
         #Quality_Indicators += "\n Product start time" + PET
-        PET = Product_Info.find("PRODUCT_END_TIME").text #End time or stop time
+        PET = Product_Info.find("PRODUCT_STOP_TIME").text #End time or stop time
         GT = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
         Quality_Indicators += "\n Product start time" + PST + "\n Product end time" + PET +"\n Generation time" + GT
         print Quality_Indicators

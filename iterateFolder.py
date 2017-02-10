@@ -11,15 +11,31 @@ def extractClouds(dir, metadata):
     print metadata
     tree = ET.parse(metadata)
     root = tree.getroot()
+    
 
     for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
         return Quality_Indicators_Info.text
 
-os.chdir(r'C:\GISN24')
+def extractSunAngle(dir, metadata):
+    os.chdir(dir)
+    tree = ET.parse(metadata)
+    root = tree.getroot()
+    result =''
+    
+    for Mean_Sun_Angle in root.iter('Mean_Sun_Angle'):
+        result += '\n' + ('Mean Zenith Angle: ') + Mean_Sun_Angle.find('ZENITH_ANGLE').text
+        result += '\n' + ('Mean Azimuth Angle: ') + Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
+    
+    return result
+    
+    
+os.chdir(r'C:\Mons')
 
-for root, dirs, files in os.walk("C:\GISN24"):
+for root, dirs, files in os.walk("C:\Mons"):
     for name in files:
         if name.endswith('.xml'):
             if "MTD" in name:
                 print root
-                print extractClouds(root,name)
+                
+                print extractSunAngle(root,name)
+                

@@ -4,7 +4,7 @@ import os
 '''
 @author: manand83
 '''
-# Retrives the cluod and time stamp content in the MTD file in teh owerarching folder
+# Retrives the cloud and time stamp content in the MTD file in teh owerarching folder
 def extractCloudsTime(dir, metadata):
     os.chdir(dir)
     print os.getcwd()
@@ -13,10 +13,10 @@ def extractCloudsTime(dir, metadata):
     root = tree.getroot()
     Quality_Indicators =''
     
-    for Product_Info in root.find('Product_Info'): # Finds 
-        PST = Product_Info.find("PRODUCT_START_TIME").text
+    for Product_Info in root.find('Product_Info'): # Finds product info
+        PST = Product_Info.find("PRODUCT_START_TIME").text #Start time
         #Quality_Indicators += "\n Product start time" + PET
-        PET = Product_Info.find("PRODUCT_END_TIME").text
+        PET = Product_Info.find("PRODUCT_END_TIME").text #End time or stop time
         GT = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
         Quality_Indicators += "\n Product start time" + PST + "\n Product end time" + PET +"\n Generation time" + GT
         print Quality_Indicators

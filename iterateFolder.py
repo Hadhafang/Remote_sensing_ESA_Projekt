@@ -4,18 +4,27 @@ import os
 '''
 @author: manand83
 '''
-
+#class extractInfo:
+    
 def extractClouds(dir, metadata):
     os.chdir(dir)
     print os.getcwd()
     print metadata
     tree = ET.parse(metadata)
     root = tree.getroot()
-    
+    result = ''
+    for Product_Info in root.iter('Product_Info'): # Finds product info
+        PST = Product_Info.find("PRODUCT_START_TIME").text #Start time
+        PET = Product_Info.find("PRODUCT_STOP_TIME").text #End time or stop time
+        GT = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
+        result += "\n Product start time" + PST + "\n Product end time" + PET +"\n Generation time" + GT
+       
 
     for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
-        return Quality_Indicators_Info.text
-
+        result+= Quality_Indicators_Info.text
+    
+    return result
+    
 def extractSunAngle(dir, metadata):
     os.chdir(dir)
     tree = ET.parse(metadata)
@@ -36,6 +45,6 @@ for root, dirs, files in os.walk("C:\Mons"):
         if name.endswith('.xml'):
             if "MTD" in name:
                 print root
-                
+                print extractClouds(root,name)
                 print extractSunAngle(root,name)
                 

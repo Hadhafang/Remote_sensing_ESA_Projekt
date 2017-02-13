@@ -17,16 +17,9 @@ def extractClouds(dir, metadata):
         PST = Product_Info.find("PRODUCT_START_TIME").text #Start time
         PET = Product_Info.find("PRODUCT_STOP_TIME").text #End time or stop time
         GT = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
-<<<<<<< HEAD
-        
-        Quality_Indicators += "\nProduct start time" + PST + "\nProduct end time" + PET +"\nGeneration time" + GT
-        
-        print Quality_Indicators
-=======
-        result += "\n Product Name: " +PI +  "\n Product start time: " + PST + "\n Product end time: " + PET +"\n Generation time: " + GT
-       
->>>>>>> refs/remotes/origin/master
 
+        result += "\n Product Name: " +PI +  "\n Product start time: " + PST + "\n Product end time: " + PET +"\n Generation time: " + GT
+        
     for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
         result+= Quality_Indicators_Info.text
     

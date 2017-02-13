@@ -17,14 +17,15 @@ class extractMTD:
             PET = Product_Info.find("PRODUCT_STOP_TIME").text #End time or stop time
             GT = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
             self.result += "\n Product Name: " +PI +  "\n Product start time: " + PST + "\n Product end time: " + PET +"\n Generation time: " + GT
+        
         for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
-        self.result+= Quality_Indicators_Info.text
+            self.result+= Quality_Indicators_Info.text
     
-    return result
+    return self.result
             
     def SunAngle(self)
          for Mean_Sun_Angle in self.root.iter('Mean_Sun_Angle'):
             self.result += '\n' + ('Mean Zenith Angle: ') + Mean_Sun_Angle.find('ZENITH_ANGLE').text
             self.result += '\n' + ('Mean Azimuth Angle: ') + Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
     
-        return self.result
+    return self.result

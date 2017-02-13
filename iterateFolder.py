@@ -4,7 +4,7 @@ import os
 '''
 @author: manand83
 '''
-#class extractMTD:
+#class extractMTD:S
   #  def __init__():
         
 def extractClouds(dir, metadata):

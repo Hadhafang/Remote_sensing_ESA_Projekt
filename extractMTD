@@ -1,0 +1,30 @@
+import xml.etree.ElementTree as ET
+import os
+
+'''
+@author: hadhafang
+'''
+class extractMTD:
+    def __init__(self, dir, metadat):
+        self.dir = os.chdir(dir)
+        self.root = ET.parse(metadata).getroot()
+        self.result = ''
+    
+    def TimeCloud(self)
+        for Product_Info in self.root.iter('Product_Info'): # Finds product info
+            PI = Product_Info.find('PRODUCT_URI').text #Product name
+            PST = Product_Info.find("PRODUCT_START_TIME").text #Start time
+            PET = Product_Info.find("PRODUCT_STOP_TIME").text #End time or stop time
+            GT = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
+            self.result += "\n Product Name: " +PI +  "\n Product start time: " + PST + "\n Product end time: " + PET +"\n Generation time: " + GT
+        for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
+        self.result+= Quality_Indicators_Info.text
+    
+    return result
+            
+    def SunAngle(self)
+         for Mean_Sun_Angle in self.root.iter('Mean_Sun_Angle'):
+            self.result += '\n' + ('Mean Zenith Angle: ') + Mean_Sun_Angle.find('ZENITH_ANGLE').text
+            self.result += '\n' + ('Mean Azimuth Angle: ') + Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
+    
+        return self.result

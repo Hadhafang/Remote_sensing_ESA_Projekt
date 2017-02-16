@@ -21,4 +21,6 @@ class iterateFolder:
                         self.metadata[-1].SunAngle(root,name) #This will always be wrong now
                         # print extractClouds(root,name)
                         # print extractSunAngle(root,name)
+        return self.metadata
+        
                 

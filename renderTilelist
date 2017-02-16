@@ -3,4 +3,5 @@ import os
 
 '''
 @author: hadhafang
+render a list of all tiles and certain parts of their meta data.
 '''

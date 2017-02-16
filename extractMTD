@@ -5,6 +5,19 @@ import os
 @author: hadhafang
 '''
 class extractMTD:
+    """Extract meta data from a metadata folder for the Sentinel project. Will 
+    save them in a list.
+
+    Positions:
+    0 - id of product
+    1 - the start time of the product
+    2 - end time of the product
+    3 - boleean true if end time equals start time otherwise false
+    4 - generation time
+    5 - mean cloudiness
+    6 - zenith angle
+    7 - azimuth angel
+    """
     def __init__(self):
         
         self.lst = [None] * 8 # list of the 8 individual meta data

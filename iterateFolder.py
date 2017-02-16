@@ -16,7 +16,7 @@ class iterateFolder:
             for name in files:
                 if name.endswith('.xml'):
                     if "MTD" in name:
-                        self.metadata.append.extractMTD() #it should only append witth the outhermost mtd
+                        self.metadata.append.extractMTD #it should only append witth the outhermost mtd
                         self.metadata[-1].TimeCloud(root,name) #For the outermost mtd
                         self.metadata[-1].SunAngle(root,name) #This will always be wrong now
                         # print extractClouds(root,name)

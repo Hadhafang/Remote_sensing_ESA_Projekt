@@ -1,7 +1,17 @@
-import xml.etree.ElementTree as ET
+import datetime
 import os
+import iterateFolder
 
 '''
 @author: hadhafang
 render a list of all tiles and certain parts of their meta data.
 '''
+dir = os.chdir(r'C:\Mons') #change it to the path as needed
+file = iteratFolder(dir)
+
+
+open(SentinelList.txt,w) # Name of file. 'w' indicates write
+now = datetime.datetime.now
+#string buliding
+renderingTime = str(now.year
+str = 'id\tstart_time\tstop_time\tstart_equals_end\tgeneration_time\tCloud_Coverage_Assessment\tZenith_angel\tAzimuth_angel'

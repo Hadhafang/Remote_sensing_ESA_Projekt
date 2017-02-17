@@ -22,7 +22,7 @@ class extractMTD:
         
         self.lst = [None] * 8 # list of the 8 individual meta data
     
-    def TimeCloud(self, dir, metadata)
+    def TimeCloud(self, dir, metadata):
         self.dir = os.chdir(dir)
         self.root = ET.parse(metadata).getroot()
         for Product_Info in self.root.iter('Product_Info'): # Finds product info
@@ -35,9 +35,9 @@ class extractMTD:
         for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
             self.lst[5] = Quality_Indicators_Info.text
     
-    return self.lst
+        return self.lst
             
-    def SunAngle(self, dir, metadata)
+    def SunAngle(self, dir, metadata):
     """ Only in granule """
         self.dir = os.chdir(dir)
         self.root = ET.parse(metadata).getroot()
@@ -45,4 +45,7 @@ class extractMTD:
             self.lst[6] Mean_Sun_Angle.find('ZENITH_ANGLE').text
             self.lst[7] Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
     
-    return self.lst
+        return self.lst
+        
+    def getList(self):
+        return self.lst

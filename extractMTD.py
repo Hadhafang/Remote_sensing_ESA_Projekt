@@ -5,6 +5,7 @@ import os
 @author: hadhafang
 '''
 class extractMTD:
+
     """Extract meta data from a metadata (mtd) folder for the Sentinel project. Will 
     save them in a list.
 
@@ -46,6 +47,6 @@ class extractMTD:
             self.lst[7] Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
     
         return self.lst
-    
-    getList(self):
+        
+    def getList(self):
         return self.lst

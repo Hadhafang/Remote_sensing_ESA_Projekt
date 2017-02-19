@@ -7,16 +7,16 @@ import os
 render a list of all tiles and certain parts of their meta data.
 '''
 dir = os.chdir(r'C:\Mons') #change it to the path as needed
-files = iteratFolder(dir)
+files = iterateFolder(dir)
 
 
-open(SentinelList.txt,w) # Name of file. 'w' indicates write
+open('SentinelList.txt','w') # Name of file. 'w' indicates write
 now = datetime.datetime.now()
 # string buliding or rather table building
-year = str(now.year)
-month =str (now.month)
-day = str(now.day)
-hour = str(now.hour)
+year = now.year
+month = now.month
+day = now.day
+hour = now.hour
 
 
 rT = year + '-'+ month + '-' + day + ' ' + hour +'\n' #Rendering time a time stamp

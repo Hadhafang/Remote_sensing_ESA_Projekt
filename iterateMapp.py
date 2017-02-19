@@ -1,29 +1,26 @@
 import xml.etree.ElementTree as ET
 import os
 
-# os.chdir(r'C:\GISN24\Projekt')
-os.chdir(r'C:\GISN24') # Vi borde nog kopiera deras system
-print os.getcwd()
+'''
+@author: manand83
+'''
 
-# for root, dirs, files in os.walk("Z:\S2a\28PDC"):
-#     for name in files:
-#         if name.endswith('.xml'):
-#             print os.sep.join([dirpath, filename])
-iterations = 0
-for root, dirs, files in os.walk("C:\GISN24"):
-    iterations  += 1
+def walklevel(some_dir, level=10):
+    some_dir = some_dir.rstrip(os.path.sep)
+    assert os.path.isdir(some_dir)
+    num_sep = some_dir.count(os.path.sep)
+    for root, dirs, files in os.walk(some_dir):
+        yield root, dirs, files
+        num_sep_this = root.count(os.path.sep)
+        if num_sep + level <= num_sep_this:
+            del dirs[:]
+
+from extractMetadata import extractClouds
+os.chdir(r'C:\GISN24')
+
+for root, dirs, files in walklevel('C:\GISN24'):
     for name in files:
         if name.endswith('.xml'):
-            print(os.path.join(root, name))
-        # a.append(os.path.join(root,name))
-    for name in dirs:
-        if name.endswith('.xml'):
-            print(os.path.join(root, name))
-        # b.append(os.path.join(root,name))
-    print("there has been " + iterations +"iterations")
-# tree = ET.parse('MTD_MSIL1C.xml')
-# root = tree.getroot()
-#
-#
-# for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
-#     print Quality_Indicators_Info.text
+            if "MTD" in name:
+                print root
+                print extractClouds(root,name)

@@ -22,7 +22,7 @@ def walklevel(some_dir, level):
 # -------------------------------------------------------------
 # DECLARE VECTORS TO STORE METADATA
 # -------------------------------------------------------------
-name = [] # name of the product (ex 28PDC)
+names = [] # name of the product (ex 28PDC)
 id = [] # id of the product
 cloud = [] #
 startTime = [] #the start time of the product
@@ -46,9 +46,19 @@ from extractMetadata import extractAzimuthAngle
 # STORES THE NAME OF THE TOP FOLDER (ex 28PDC)
 # -------------------------------------------------------------
 os.chdir(r'C:\GISN24')
-for root, dirs, files in walklevel('C:\GISN24', 2):
-    name.append(os.path.abspath(os.path.join(root, os.pardir)))
-print name
+directories = []
+productname = []
+for root, dirs, files in walklevel('C:\GISN24', 0):
+    for i, item in enumerate(dirs):
+        directories.append(os.path.join(root, dirs[i])) # ex ['C:\\GISN24\\28PDC', 'C:\\GISN24\\32VPR']
+        productname.append(dirs[i]) # ex ['28PDC', '32VPR']
+folders = 0
+for i, item in enumerate(directories):
+    for root, dirs, files in walklevel(directories[i],0):
+        folders += len(dirs) # count number of folders in every ['C:\\GISN24\\28PDC', 'C:\\GISN24\\32VPR']
+        for n in range(folders):
+            names.append(productname[i])
+        folders = 0 # set to 0 to count next next folder
 
 # -------------------------------------------------------------
 # ITERATION EXTRACTING INFORMATION FROM THE FIRST METADATA-FILE
@@ -94,6 +104,7 @@ workbook = xlsxwriter.Workbook('sentinel123.xlsx')
 worksheet = workbook.add_worksheet()
 
 # Sets heading to columns
+worksheet.write(0, 0, 'Name') # (row, col, data)
 worksheet.write(0, 1, 'Id') # (row, col, data)
 worksheet.write(0, 2, 'Clouds')
 worksheet.write(0, 3, 'Start time')
@@ -105,6 +116,7 @@ worksheet.write(0, 8, 'Asimuth angle')
 
 # Walks through every list and puts the information in correct cell
 for index, member in enumerate(id):
+     worksheet.write(index+1, 0,names[index])
      worksheet.write(index+1, 1,id[index])
      worksheet.write(index+1, 2,cloud[index])
      worksheet.write(index+1, 3,startTime[index])

@@ -5,7 +5,8 @@ import os
 @author: hadhafang
 '''
 class extractMTD:
-    """Extract meta data from a metadata folder for the Sentinel project. Will 
+
+    """Extract meta data from a metadata (mtd) folder for the Sentinel project. Will 
     save them in a list.
 
     Positions:

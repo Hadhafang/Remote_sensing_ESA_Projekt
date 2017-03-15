@@ -24,7 +24,7 @@ def walklevel(some_dir, level):
 # -------------------------------------------------------------
 names = [] # name of the product (ex 28PDC)
 id = [] # id of the product
-cloud = [] #
+cloud = [] # percentage cloud coverage
 startTime = [] #the start time of the product
 stopTime = [] # the stop time of the product
 timeEqual = [] # boleean true if end time equals start time otherwise false

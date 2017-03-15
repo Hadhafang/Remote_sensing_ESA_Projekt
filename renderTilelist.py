@@ -26,4 +26,3 @@ hour = str(now.hour)
 
 rT = year+'-'+month+'-'+day +' ' +hour+'\n' #Rendering time a time stamp
 table = rT + 'id\tstart_time\tstop_time\tstart_equals_end\tgeneration_time\tCloud_Coverage_Assessment\tZenith_angel\tAzimuth_angel'
-

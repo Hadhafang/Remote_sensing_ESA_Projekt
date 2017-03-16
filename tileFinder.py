@@ -1,8 +1,7 @@
-import xml.etree.ElementTree as ET
 import os
 import xlrd
-import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 
 
 #tilename tabellnamn.  x-axel -> start/stop time.  y-axel cloud
@@ -11,21 +10,33 @@ import matplotlib.pyplot as plt
 Plots 
 '''
 
-def test(dir,filename):
+def plot(dir,filename):
    os.chdir(dir)
    wb = xlrd.open_workbook(filename)
    first_sheet = wb.sheet_by_index(0)
    xticks = []
+   x = []
+   y = []
+   counter = 0
+   name = raw_input('Please enter sought tilename, e.g. 28PDC' +'\n')
    for row in range(first_sheet.nrows):
-       x = [row]
-       xticks=[first_sheet.cell_value(row+1,3)]
-       y = first_sheet.cell_value(row+1,2)
-       plt.title(first_sheet.cell_value(row+1,0))
-       plt.xticks(x,xticks,rotation=90)
-       plt.bar(x,y)
-       plt.show()
-      
+       if name == first_sheet.cell_value(row,0):
+           x.append(row)
+           xticks.append([first_sheet.cell_value(row,3)])
+           y.append(first_sheet.cell_value(row,2))
+           counter+=1
+   plt.title(name)   
+   plt.tick_params(axis='both', which='major', labelsize=13)
+   plt.tick_params(axis='both', which='minor', labelsize=10)
+   plt.ylim(0,100,10)      
+   plt.xlabel('Start time',fontsize =14)
+   plt.ylabel('Cloudiness',fontsize =14)
+   plt.xticks(x,xticks,rotation=15)
+   plt.bar(x,y)        
+   plt.show()
+   
+   if counter == 0:   
+       print('There is no such tilename')
        
-       
-test('C:\Users\Mikael\Downloads','sentinel123.xlsx')
+plot('C:\Users\Mikael\Downloads','sentinel123.xlsx')
        

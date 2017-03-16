@@ -45,7 +45,6 @@ from extractMetadata import extractAzimuthAngle
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-BootRoot = os.path.abspath('C:\Logg') #Store the defualt path here
 
 os.chdir(BootRoot)
 directories = []

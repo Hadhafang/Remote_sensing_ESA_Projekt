@@ -43,12 +43,14 @@ from extractMetadata import extractZenithAngle
 from extractMetadata import extractAzimuthAngle
 
 # -------------------------------------------------------------
-# STORES THE NAME OF THE TOP FOLDER (ex 28PDC)
+# STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-os.chdir(r'C:\GISN24')
+BootRoot = os.path.abspath('C:\Logg') #Store the deafult path here
+
+os.chdir(BootRoot)
 directories = []
 productname = []
-for root, dirs, files in walklevel('C:\GISN24', 0):
+for root, dirs, files in walklevel(BootRoot, 0):
     for i, item in enumerate(dirs):
         directories.append(os.path.join(root, dirs[i])) # ex ['C:\\GISN24\\28PDC', 'C:\\GISN24\\32VPR']
         productname.append(dirs[i]) # ex ['28PDC', '32VPR']
@@ -63,21 +65,21 @@ for i, item in enumerate(directories):
 # -------------------------------------------------------------
 # ITERATION EXTRACTING INFORMATION FROM THE FIRST METADATA-FILE
 # -------------------------------------------------------------
-os.chdir(r'C:\GISN24')
-for root, dirs, files in walklevel('C:\GISN24', 2):
+os.chdir(BootRoot)
+for root, dirs, files in walklevel(BootRoot, 2):
     for name in files:
         if name.endswith('.xml'):
             if "MTD" in name:
                 cloud.append(extractClouds(root,name))
                 id.append(extractId(root,name))
-                startTime.append(extractStopTime(root,name))
+                startTime.append(extractStartTime(root,name))
                 stopTime.append(extractStopTime(root,name))
                 genTime.append(extractGenTime(root,name))
 
 # -------------------------------------------------------------
 # ITERATION EXTRACTING  INFORATION FROM THE GRANULE FOLDER
 # -------------------------------------------------------------
-for root, dirs, files in walklevel('C:\GISN24', 3):
+for root, dirs, files in walklevel(BootRoot, 3):
     for name in dirs:
         if root.endswith('GRANULE'): # finds folder "GRANULE" and saves the path to "directory"
             directory = root
@@ -98,7 +100,7 @@ for i,item in enumerate(startTime):
 # -------------------------------------------------------------
 # EXPORT METADATA TO EXCEL SHEET
 # -------------------------------------------------------------
-os.chdir(r'C:\GISN24') #Specifies where to save the file
+os.chdir(BootRoot) #Specifies where to save the file
 # Create a workbook and add a worksheet.
 workbook = xlsxwriter.Workbook('sentinel123.xlsx')
 worksheet = workbook.add_worksheet()

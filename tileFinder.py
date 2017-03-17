@@ -38,5 +38,9 @@ def plot(dir,filename):
    if counter == 0:   
        print('There is no such tilename')
        
-plot('C:\Logg','sentinel123.xlsx')
+
+
+
+plot('C:\Users\Mikael\Downloads','sentinel123.xlsx')
+
        

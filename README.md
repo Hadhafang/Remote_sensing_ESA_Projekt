@@ -21,3 +21,5 @@ https://drive.google.com/open?id=0BzP2lJTib6lZWEN5SjJCdVVxdlE Projekt mapp med d
 
 ## Andra kopplade projekt
 https://github.com/olivierhagolle/Sentinel-download/blob/master/README.md
+
+https://scihub.copernicus.eu/twiki/do/view/SciHubUserGuide/5APIsAndBatchScripting#Get_product_UUID_from_product_na

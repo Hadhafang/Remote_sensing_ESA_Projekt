@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+import os, hashlib
 """
 Created on Thu Mar 16 12:04:52 2017
 
@@ -7,45 +7,32 @@ Created on Thu Mar 16 12:04:52 2017
 Will produce MD5 of root folder
 """
 
-from iterateMapp import walklevel
-
-
-        
 
 def checksum (dir):
-# -------------------------------------------------------------
-# A HELP FUNKTION THAT MAKES THE ACTUALL HASH
-# -------------------------------------------------------------
-    
-    def hashMaker(dir, file):
-        import hashlib
-        os.chdir(dir)
-        hasher = hashlib.md5()
-        with open(file, 'rb') as afile:
-            buf = afile.read()
-            hasher.update(buf)
-            return hasher.hexdigest()
-# -------------------------------------------------------------
-# ACTUALL CHECKSUM CODE
-# -------------------------------------------------------------    
-    directory = os.path.abspath(dir)
-    
-    hashMatrix= [['Inspire',0],['Manifest',0],['Mtd',0]]
-    for root, dirs, files in walklevel(directory, 0):
+    dir = os.path.abspath(dir)
+    md5 = hashlib.md5()
+    for root,dirs files in os.walk(dir):
         for name in files:
-    #These three should be the only files in files but the checking is for safty
-            if name.endswith('INSPIRE.xml'):
-                hashMatrix [0][1] = hashMaker(root,name)  
-            elif name.endswith('manifest.safe'):
-                hashMatrix [1][1]  = hashMaker(root,name)
-            elif name.endswith('.xml'):
-                if "MTD" in name:
-                   hashMatrix [2][1]  = hashMaker(root, name)
-            
-            
-                    
-    return hashMatrix
+            filepath = os.path.join(root,names) # joins the path and the file.
+        try:
+          f1 = open(filepath, 'rb')
+        except:
+          # You can't open the file for some reason
+          f1.close()
+          continue
+    while 1:
+        buf = f1
     
-                
-path = os.path.abspath(r'c:\logg\33uvb\s2a_msil1c_20161208t102422_n0204_r065_t33uvb_20161208t102418.safe')
-print checksum(path)    
+        
+#   SHAhash = hashlib.md5()
+#   for root, dirs, files in os.walk(dir):
+#      for names in files:
+#          filepath = os.path.join(root,names)
+#   while 1:
+#      # Read file in as little chunks
+#      buf = f1.read(4096)
+#      if not buf : break
+#      SHAhash.update(hashlib.md5(buf).hexdigest())
+#
+#      
+#checksum(os.path.abspath('C:\Logg\33UVB\S2A_MSIL1C_20161208T102422_N0204_R065_T33UVB_20161208T102418.SAFE')

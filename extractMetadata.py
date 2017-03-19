@@ -1,5 +1,7 @@
 import xml.etree.ElementTree as ET
 import os
+import re
+import fnmatch
 
 def extractClouds(dir, metadata):
     os.chdir(dir)
@@ -9,7 +11,18 @@ def extractClouds(dir, metadata):
     for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
         return Quality_Indicators_Info.text
 
-def extractId(dir, metadata):
+def extractID(dir, metadata):
+    os.chdir(dir)
+    tree = ET.parse(metadata)
+    root = tree.getroot()
+
+    for TILE_ID in root.iter('TILE_ID'):
+        return TILE_ID.text
+
+    for TILE_ID_2A in root.iter('TILE_ID_2A'):
+        return TILE_ID_2A.text
+
+def extractURI(dir, metadata):
     os.chdir(dir)
     tree = ET.parse(metadata)
     root = tree.getroot()

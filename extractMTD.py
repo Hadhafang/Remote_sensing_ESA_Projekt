@@ -5,8 +5,7 @@ import os
 @author: hadhafang
 '''
 class extractMTD:
-
-    """Extract meta data from a metadata (mtd) folder for the Sentinel project. Will 
+    """Extract meta data from a metadata folder for the Sentinel project. Will 
     save them in a list.
 
     Positions:
@@ -39,7 +38,8 @@ class extractMTD:
         return self.lst
             
     def SunAngle(self, dir, metadata):
-    """ Only in granule """
+        """ Only in granule 
+        """
         self.dir = os.chdir(dir)
         self.root = ET.parse(metadata).getroot()
         for Mean_Sun_Angle in self.root.iter('Mean_Sun_Angle'):

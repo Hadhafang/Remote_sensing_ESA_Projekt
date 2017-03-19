@@ -1,6 +1,7 @@
 
 import os, xlsxwriter
 
+
 '''
 @author: manand83
 '''
@@ -10,7 +11,8 @@ import os, xlsxwriter
 # DECLARE VECTORS TO STORE METADATA
 # -------------------------------------------------------------
 names = [] # name of the product (ex 28PDC)
-id = [] # id of the product
+id = [] # tile-id of the product
+uri = [] # uri of the product
 cloud = [] # percentage cloud coverage
 startTime = [] #the start time of the product
 stopTime = [] # the stop time of the product
@@ -23,7 +25,8 @@ ti = []
 # IMPORT METHODS TO EXTRACT METADATA FROM XML-DOCUMENT
 # -------------------------------------------------------------
 from extractMetadata import extractClouds
-from extractMetadata import extractId
+from extractMetadata import extractURI
+from extractMetadata import extractID
 from extractMetadata import extractStartTime
 from extractMetadata import extractStopTime
 from extractMetadata import extractGenTime
@@ -34,7 +37,7 @@ from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-BootRoot = os.path.abspath('C:\Logg') #Store the deafult path here
+BootRoot = os.path.abspath('C:\GISN24') #Store the deafult path here
 
 os.chdir(BootRoot)
 directories = []
@@ -60,7 +63,7 @@ for root, dirs, files in walklevel(BootRoot, 2):
         if name.endswith('.xml'):
             if "MTD" in name:
                 cloud.append(extractClouds(root,name))
-                id.append(extractId(root,name))
+                uri.append(extractURI(root,name))
                 startTime.append(extractStartTime(root,name))
                 stopTime.append(extractStopTime(root,name))
                 genTime.append(extractGenTime(root,name))
@@ -78,7 +81,12 @@ for root, dirs, files in walklevel(BootRoot, 3):
                         if "MTD" in name:
                             zenithAngle.append(extractZenithAngle(root,name))
                             azimuthAngle.append(extractAzimuthAngle(root,name))
+<<<<<<< HEAD
                             ti.append(TileId(root,name))
+=======
+                            id.append(extractID(root,name))
+
+>>>>>>> refs/remotes/origin/master
 # -------------------------------------------------------------
 # CHECK IF START TIME AND STOP TIME IS EQUAL
 # -------------------------------------------------------------
@@ -96,6 +104,7 @@ worksheet = workbook.add_worksheet()
 
 # Sets heading to columns
 worksheet.write(0, 0, 'Name') # (row, col, data)
+<<<<<<< HEAD
 worksheet.write(0, 1, 'Id') # (row, col, data)
 worksheet.write(0, 2, 'Clouds')
 worksheet.write(0, 3, 'Start time')
@@ -105,10 +114,24 @@ worksheet.write(0, 6, 'Generation time')
 worksheet.write(0, 7, 'Zenith angle')
 worksheet.write(0, 8, 'Asimuth angle')
 worksheet.write(0, 9, 'TID')
+=======
+worksheet.write(0, 1, 'ID')
+worksheet.write(0, 2, 'URI') # (row, col, data)
+worksheet.write(0, 3, 'Clouds')
+worksheet.write(0, 4, 'Start time')
+worksheet.write(0, 5, 'Stop time')
+worksheet.write(0, 6, 'Is equal')
+worksheet.write(0, 7, 'Generation time')
+worksheet.write(0, 8, 'Zenith angle')
+worksheet.write(0, 9, 'Asimuth angle')
+
+
+>>>>>>> refs/remotes/origin/master
 # Walks through every list and puts the information in correct cell
 for index, member in enumerate(id):
      worksheet.write(index+1, 0,names[index])
      worksheet.write(index+1, 1,id[index])
+<<<<<<< HEAD
      worksheet.write(index+1, 2,cloud[index])
      worksheet.write(index+1, 3,startTime[index])
      worksheet.write(index+1, 4,stopTime[index])
@@ -117,5 +140,15 @@ for index, member in enumerate(id):
      worksheet.write(index+1, 7,zenithAngle[index])
      worksheet.write(index+1, 8,azimuthAngle[index])
      worksheet.write(index+1, 9,ti[index])
+=======
+     worksheet.write(index+1, 2,uri[index])
+     worksheet.write(index+1, 3,cloud[index])
+     worksheet.write(index+1, 4,startTime[index])
+     worksheet.write(index+1, 5,stopTime[index])
+     worksheet.write(index+1, 6,timeEqual[index])
+     worksheet.write(index+1, 7,genTime[index])
+     worksheet.write(index+1, 8,zenithAngle[index])
+     worksheet.write(index+1, 9,azimuthAngle[index])
+>>>>>>> refs/remotes/origin/master
 
 workbook.close()

@@ -1,5 +1,5 @@
 import os, hashlib
-import os
+
 """
 Created on Thu Mar 16 12:04:52 2017
 
@@ -13,15 +13,12 @@ from iterateMapp import walklevel
         
 
 def checksum (dir):
-    dir = os.path.abspath(dir)
-    md5 = hashlib.md5()
-    for root,dirs files in os.walk(dir):
+    directory = os.path.abspath(dir)
 # -------------------------------------------------------------
 # A HELP FUNKTION THAT MAKES THE ACTUALL HASH
 # -------------------------------------------------------------
     
     def hashMaker(dir, file):
-        import hashlib
         os.chdir(dir)
         hasher = hashlib.md5()
         with open(file, 'rb') as afile:
@@ -31,20 +28,11 @@ def checksum (dir):
 # -------------------------------------------------------------
 # ACTUALL CHECKSUM CODE
 # -------------------------------------------------------------    
-    directory = os.path.abspath(dir)
+    
     
     hashMatrix= [['Inspire',0],['Manifest',0],['Mtd',0]]
     for root, dirs, files in walklevel(directory, 0):
         for name in files:
-            filepath = os.path.join(root,names) # joins the path and the file.
-        try:
-          f1 = open(filepath, 'rb')
-        except:
-          # You can't open the file for some reason
-          f1.close()
-          continue
-    while 1:
-        buf = f1
     #These three should be the only files in files but the checking is for safty
             if name.endswith('INSPIRE.xml'):
                 hashMatrix [0][1] = hashMaker(root,name)  

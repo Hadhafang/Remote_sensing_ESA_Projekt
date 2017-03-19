@@ -18,6 +18,7 @@ timeEqual = [] # boleean true if end time equals start time otherwise false
 genTime = [] # generation time
 zenithAngle = [] # zenith angle
 azimuthAngle = [] # azimuth angle
+ti = []
 # -------------------------------------------------------------
 # IMPORT METHODS TO EXTRACT METADATA FROM XML-DOCUMENT
 # -------------------------------------------------------------
@@ -28,6 +29,7 @@ from extractMetadata import extractStopTime
 from extractMetadata import extractGenTime
 from extractMetadata import extractZenithAngle
 from extractMetadata import extractAzimuthAngle
+from extractMetadata import TileId
 from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
@@ -76,7 +78,7 @@ for root, dirs, files in walklevel(BootRoot, 3):
                         if "MTD" in name:
                             zenithAngle.append(extractZenithAngle(root,name))
                             azimuthAngle.append(extractAzimuthAngle(root,name))
-
+                            ti.append(TileId(root,name))
 # -------------------------------------------------------------
 # CHECK IF START TIME AND STOP TIME IS EQUAL
 # -------------------------------------------------------------
@@ -102,7 +104,7 @@ worksheet.write(0, 5, 'Is equal')
 worksheet.write(0, 6, 'Generation time')
 worksheet.write(0, 7, 'Zenith angle')
 worksheet.write(0, 8, 'Asimuth angle')
-
+worksheet.write(0, 9, 'TID')
 # Walks through every list and puts the information in correct cell
 for index, member in enumerate(id):
      worksheet.write(index+1, 0,names[index])
@@ -114,5 +116,6 @@ for index, member in enumerate(id):
      worksheet.write(index+1, 6,genTime[index])
      worksheet.write(index+1, 7,zenithAngle[index])
      worksheet.write(index+1, 8,azimuthAngle[index])
+     worksheet.write(index+1, 9,ti[index])
 
 workbook.close()

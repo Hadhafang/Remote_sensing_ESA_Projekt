@@ -81,12 +81,8 @@ for root, dirs, files in walklevel(BootRoot, 3):
                         if "MTD" in name:
                             zenithAngle.append(extractZenithAngle(root,name))
                             azimuthAngle.append(extractAzimuthAngle(root,name))
-<<<<<<< HEAD
-                            ti.append(TileId(root,name))
-=======
                             id.append(extractID(root,name))
 
->>>>>>> refs/remotes/origin/master
 # -------------------------------------------------------------
 # CHECK IF START TIME AND STOP TIME IS EQUAL
 # -------------------------------------------------------------
@@ -104,17 +100,7 @@ worksheet = workbook.add_worksheet()
 
 # Sets heading to columns
 worksheet.write(0, 0, 'Name') # (row, col, data)
-<<<<<<< HEAD
-worksheet.write(0, 1, 'Id') # (row, col, data)
-worksheet.write(0, 2, 'Clouds')
-worksheet.write(0, 3, 'Start time')
-worksheet.write(0, 4, 'Stop time')
-worksheet.write(0, 5, 'Is equal')
-worksheet.write(0, 6, 'Generation time')
-worksheet.write(0, 7, 'Zenith angle')
-worksheet.write(0, 8, 'Asimuth angle')
-worksheet.write(0, 9, 'TID')
-=======
+
 worksheet.write(0, 1, 'ID')
 worksheet.write(0, 2, 'URI') # (row, col, data)
 worksheet.write(0, 3, 'Clouds')
@@ -126,21 +112,11 @@ worksheet.write(0, 8, 'Zenith angle')
 worksheet.write(0, 9, 'Asimuth angle')
 
 
->>>>>>> refs/remotes/origin/master
+
 # Walks through every list and puts the information in correct cell
 for index, member in enumerate(id):
      worksheet.write(index+1, 0,names[index])
      worksheet.write(index+1, 1,id[index])
-<<<<<<< HEAD
-     worksheet.write(index+1, 2,cloud[index])
-     worksheet.write(index+1, 3,startTime[index])
-     worksheet.write(index+1, 4,stopTime[index])
-     worksheet.write(index+1, 5,timeEqual[index])
-     worksheet.write(index+1, 6,genTime[index])
-     worksheet.write(index+1, 7,zenithAngle[index])
-     worksheet.write(index+1, 8,azimuthAngle[index])
-     worksheet.write(index+1, 9,ti[index])
-=======
      worksheet.write(index+1, 2,uri[index])
      worksheet.write(index+1, 3,cloud[index])
      worksheet.write(index+1, 4,startTime[index])
@@ -149,6 +125,5 @@ for index, member in enumerate(id):
      worksheet.write(index+1, 7,genTime[index])
      worksheet.write(index+1, 8,zenithAngle[index])
      worksheet.write(index+1, 9,azimuthAngle[index])
->>>>>>> refs/remotes/origin/master
 
 workbook.close()

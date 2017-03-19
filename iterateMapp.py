@@ -1,25 +1,12 @@
-import xml.etree.ElementTree as ET
-import os
-import xlsxwriter
+
+import os, xlsxwriter
 
 
 '''
 @author: manand83
 '''
 
-# -------------------------------------------------------------
-# METHOD THAT DEFINES HOW DEEP THE ITERATION WILL GO, IF LEVEL
-# IS SET TO 2 THE ITERATION WILL GO 2 FOLDERS DEEP AND NOT FURHTER
-# -------------------------------------------------------------
-def walklevel(some_dir, level):
-    some_dir = some_dir.rstrip(os.path.sep)
-    assert os.path.isdir(some_dir)
-    num_sep = some_dir.count(os.path.sep)
-    for root, dirs, files in os.walk(some_dir):
-        yield root, dirs, files
-        num_sep_this = root.count(os.path.sep)
-        if num_sep + level <= num_sep_this:
-            del dirs[:]
+
 # -------------------------------------------------------------
 # DECLARE VECTORS TO STORE METADATA
 # -------------------------------------------------------------
@@ -44,7 +31,7 @@ from extractMetadata import extractStopTime
 from extractMetadata import extractGenTime
 from extractMetadata import extractZenithAngle
 from extractMetadata import extractAzimuthAngle
-
+from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------

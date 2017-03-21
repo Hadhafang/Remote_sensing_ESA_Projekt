@@ -18,7 +18,7 @@ def UniqueId(dir,filename):
         URI = first_sheet.cell_value(row+1,1)
         URI = URI[:-5]
         url = 'https://scihub.copernicus.eu/dhus/odata/v1/Products?$filter=Name eq '+"'" +URI +"'"
-        auth = ('Geotester','LarsEDoc02!')
+        auth = ('username','password')
         r = requests.get(url,auth=auth)
         result = r.content
         tree = etree.parse(result)

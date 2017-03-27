@@ -1,7 +1,6 @@
 import os
 import xlrd
 import matplotlib.pyplot as plt
-import matplotlib as mpl
 
 
 #tilename tabellnamn.  x-axel -> start/stop time.  y-axel cloud

@@ -7,7 +7,7 @@ Created on Thu Mar 16 12:04:52 2017
 Will produce MD5 of root folder
 """
 
-from iterateMapp import walklevel
+from WalkLevel import walklevel
 
 
         
@@ -30,22 +30,16 @@ def checksum (dir):
 # -------------------------------------------------------------    
     
     
-    hashMatrix= [['Inspire',0],['Manifest',0],['Mtd',0]]
-    for root, dirs, files in walklevel(directory, 0):
-        for name in files:
+    hashVector= []
+    for root, dirs, files in walklevel(directory, 2):
+        for fl in files:
     #These three should be the only files in files but the checking is for safty
-            if name.endswith('INSPIRE.xml'):
-                hashMatrix [0][1] = hashMaker(root,name)  
-            elif name.endswith('manifest.safe'):
-                hashMatrix [1][1]  = hashMaker(root,name)
-            elif name.endswith('.xml'):
-                if "MTD" in name:
-                   hashMatrix [2][1]  = hashMaker(root, name)
+            hashVector.append(hashMaker(root,fl))
             
             
                     
-    return hashMatrix
+    return hashVector
     
                 
-path = os.path.abspath(r'c:\logg\33uvb\s2a_msil1c_20161208t102422_n0204_r065_t33uvb_20161208t102418.safe')
+path = os.path.abspath(r'C:\Logg\28PDC\S2A_OPER_PRD_MSIL1C_PDMC_20160122T001801_R037_V20160121T113930_20160121T113930.SAFE\GRANULE')
 print checksum(path)    

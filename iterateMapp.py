@@ -20,6 +20,7 @@ timeEqual = [] # boleean true if end time equals start time otherwise false
 genTime = [] # generation time
 zenithAngle = [] # zenith angle
 azimuthAngle = [] # azimuth angle
+ti = []
 # -------------------------------------------------------------
 # IMPORT METHODS TO EXTRACT METADATA FROM XML-DOCUMENT
 # -------------------------------------------------------------
@@ -31,6 +32,7 @@ from extractMetadata import extractStopTime
 from extractMetadata import extractGenTime
 from extractMetadata import extractZenithAngle
 from extractMetadata import extractAzimuthAngle
+from extractMetadata import TileId
 from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
@@ -98,6 +100,7 @@ worksheet = workbook.add_worksheet()
 
 # Sets heading to columns
 worksheet.write(0, 0, 'Name') # (row, col, data)
+
 worksheet.write(0, 1, 'ID')
 worksheet.write(0, 2, 'URI') # (row, col, data)
 worksheet.write(0, 3, 'Clouds')
@@ -107,6 +110,7 @@ worksheet.write(0, 6, 'Is equal')
 worksheet.write(0, 7, 'Generation time')
 worksheet.write(0, 8, 'Zenith angle')
 worksheet.write(0, 9, 'Asimuth angle')
+
 
 
 # Walks through every list and puts the information in correct cell

@@ -1,7 +1,6 @@
 import sys
 import os
 import xlsxwriter
-n = input ("Enter filpath to the directorys that you want to extract data from e.g 'Z:\S2A')
 '''
 @author: manand83
 '''
@@ -34,7 +33,7 @@ from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-raw_path = input ("Enter filpath to the directorys that you want to extract data from e.g Z:\S2A")
+raw_path = raw_input ("Enter filpath to the directorys that you want to extract data from e.g Z:\S2A" +'\n')
 
 BootRoot = os.path.abspath(raw_path) #Store the deafult path here
 assert os.path.exists(BootRoot)

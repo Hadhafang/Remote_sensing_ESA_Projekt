@@ -1,6 +1,7 @@
 import sys
 import os
 import xlsxwriter
+n = input ("Enter filpath to the directorys that you want to extract data from e.g 'Z:\S2A')
 '''
 @author: manand83
 '''
@@ -17,6 +18,7 @@ timeEqual = [] # boleean true if end time equals start time otherwise false
 genTime = [] # generation time
 zenithAngle = [] # zenith angle
 azimuthAngle = [] # azimuth angle
+
 # -------------------------------------------------------------
 # IMPORT METHODS TO EXTRACT METADATA FROM XML-DOCUMENT
 # -------------------------------------------------------------
@@ -32,8 +34,10 @@ from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-BootRoot = os.path.abspath('C:\GISN24') #Store the deafult path here
+raw_path = input ("Enter filpath to the directorys that you want to extract data from e.g Z:\S2A")
 
+BootRoot = os.path.abspath(raw_path) #Store the deafult path here
+assert os.path.exists(BootRoot)
 os.chdir(BootRoot)
 directories = []
 productname = []

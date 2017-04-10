@@ -1,11 +1,8 @@
-
 import os, xlsxwriter
-
-
 '''
 @author: manand83
 '''
-
+n = input('Which folder would you like to iterate?')
 
 # -------------------------------------------------------------
 # DECLARE VECTORS TO STORE METADATA
@@ -37,7 +34,7 @@ from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-BootRoot = os.path.abspath('C:\GISN24') #Store the deafult path here
+BootRoot = os.path.abspath(n) #Store the deafult path here
 
 os.chdir(BootRoot)
 directories = []

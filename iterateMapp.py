@@ -35,6 +35,8 @@ from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
+
+
 BootRoot = os.path.abspath('C:\GISN24') #Store the deafult path here
 
 os.chdir(BootRoot)

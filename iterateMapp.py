@@ -1,9 +1,9 @@
-import os, xlsxwriter
+import sys
+import os
+import xlsxwriter
 '''
 @author: manand83
 '''
-n = input('Which folder would you like to iterate?')
-
 # -------------------------------------------------------------
 # DECLARE VECTORS TO STORE METADATA
 # -------------------------------------------------------------
@@ -17,7 +17,6 @@ timeEqual = [] # boleean true if end time equals start time otherwise false
 genTime = [] # generation time
 zenithAngle = [] # zenith angle
 azimuthAngle = [] # azimuth angle
-ti = []
 # -------------------------------------------------------------
 # IMPORT METHODS TO EXTRACT METADATA FROM XML-DOCUMENT
 # -------------------------------------------------------------
@@ -29,12 +28,11 @@ from extractMetadata import extractStopTime
 from extractMetadata import extractGenTime
 from extractMetadata import extractZenithAngle
 from extractMetadata import extractAzimuthAngle
-from extractMetadata import TileId
 from WalkLevel       import walklevel
 # -------------------------------------------------------------
 # STORES THE NAME OF THE TOP FOLDER (ex S2A)
 # -------------------------------------------------------------
-BootRoot = os.path.abspath(n) #Store the deafult path here
+BootRoot = os.path.abspath('C:\GISN24') #Store the deafult path here
 
 os.chdir(BootRoot)
 directories = []

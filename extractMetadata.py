@@ -81,9 +81,3 @@ def extractAzimuthAngle(dir, metadata):
 
     for Mean_Sun_Angle in root.iter('Mean_Sun_Angle'):
         return Mean_Sun_Angle.find("AZIMUTH_ANGLE").text
-def TileId(dir, metadata):
-    os.chdir(dir)
-    tree = ET.parse(metadata)
-    root = tree.getroot()
-    for GI in root.iter('TILE_ID')
-        return GI.text

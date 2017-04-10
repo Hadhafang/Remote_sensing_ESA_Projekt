@@ -50,7 +50,7 @@ for i, item in enumerate(directories):
         folders = 0 # set to 0 to count next next folder
 
 # -------------------------------------------------------------
-# ITERATION EXTRACTING INFORMATION FROM THE FIRST METADATA-FILE
+# ITERATION EXTRACTING INFORMATION FROM THE METADATA-FILE IN TOP-MOST FOLDER
 # -------------------------------------------------------------
 os.chdir(BootRoot)
 for root, dirs, files in walklevel(BootRoot, 2):
@@ -64,7 +64,7 @@ for root, dirs, files in walklevel(BootRoot, 2):
                 genTime.append(extractGenTime(root,name))
 
 # -------------------------------------------------------------
-# ITERATION EXTRACTING  INFORATION FROM THE GRANULE FOLDER
+# ITERATION EXTRACTING INFORMATION FROM THE GRANULE FOLDER
 # -------------------------------------------------------------
 for root, dirs, files in walklevel(BootRoot, 3):
     for name in dirs:

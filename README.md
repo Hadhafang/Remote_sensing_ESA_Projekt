@@ -1,14 +1,11 @@
-## Fj-rAnalys
-Kod för att analysera filer från ESA sentinel
-
-### Documentation Meta Data
+# Documentation Meta Data
 In order to extract, plot and check the data given from Sentinel a number of scripts has to be run. Those are described below:
 ## IterateMapp.py
 IterateMapp.py will create an excel file “Sentinel123.xlsx”. To run this file open the Command-window. Set cd to the filepath where iterateMapp.py is saved. Run “python iterateMapp.py” and a question will appear: “Enter file path to the directories that you want to extract data from e.g  Z:\S2A”.  Answer with the filepath to the parent directory of all sentinel files. 
 
 NOTE! Make sure that your filepath does not contain any swedish letters.
 
-# Sentinel123.xlsx will contain:
+### Sentinel123.xlsx will contain:
 Name - The name of the tile set. Used in PlotData.py for making comparisons between tiles with different timestamps
 Id - A unique id stamp taken from the metadata file in the topmost  directory
 Uri -  A unique id stamp taken from the metadata file in the granule  directory

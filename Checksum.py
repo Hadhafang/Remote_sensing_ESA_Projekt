@@ -28,6 +28,8 @@ def ManifestChecker(p,Sums,Control):
             oddIndex =index/2+1
             worksheet.write(oddIndex, 2,Sums[index])
             worksheet.write(oddIndex, 3,Control[index])
+    # Hide all rows without data.
+    worksheet.set_default_row(hide_unused_rows=True)
     workbook.close()
     print 'The excel document "manifestCheck.xlsx" has been made in ' + str(p)
 
@@ -61,7 +63,7 @@ def checksum (dir):
     return hashVector
     
                 
-raw_path = raw_input('Please enter filename where sought manifest is, e.g  Z:\S2a\\33UVB\S2A_MSIL1C_20161208T102422_N0204_R065_T33UVB_20161208T102418.SAFE' +'\n')
+raw_path = raw_input('Please enter filepath where sought manifest is, e.g  Z:\S2a\\33UVB\S2A_MSIL1C_20161208T102422_N0204_R065_T33UVB_20161208T102418.SAFE' +'\n')
 path = os.path.abspath(raw_path)
 assert os.path.exists(path)
 Chekkzumz = checksum(path)    

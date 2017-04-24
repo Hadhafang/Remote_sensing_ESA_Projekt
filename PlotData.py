@@ -65,6 +65,6 @@ def plotData(dir,filename):
 
 
 
-plotData('C:\Users\Mikael\Downloads','sentinel123.xlsx')
+#plotData('C:\Logg','sentinel123.xlsx')
 
        

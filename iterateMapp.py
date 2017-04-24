@@ -75,7 +75,7 @@ for root, dirs, files in walklevel(BootRoot, 3):
             directory = root
             for root, dirs, files in walklevel(directory, 3):
                 for name in files:
-                    if name.endswith('.xml'):
+                    if name.endswith('.xml') and name == files[0]:
                         if "MTD" in name:
                             zenithAngle.append(extractZenithAngle(root,name))
                             azimuthAngle.append(extractAzimuthAngle(root,name))
@@ -91,7 +91,7 @@ for i,item in enumerate(startTime):
 # -------------------------------------------------------------
 # EXPORT METADATA TO EXCEL SHEET
 # -------------------------------------------------------------
-os.chdir(BootRoot) #Specifies where to save the file
+os.chdir('C:/') #Specifies where to save the file
 # Create a workbook and add a worksheet.
 workbook = xlsxwriter.Workbook('sentinel123.xlsx')
 worksheet = workbook.add_worksheet()

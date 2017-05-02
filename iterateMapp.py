@@ -91,14 +91,13 @@ for i,item in enumerate(startTime):
 # -------------------------------------------------------------
 # EXPORT METADATA TO EXCEL SHEET
 # -------------------------------------------------------------
-os.chdir('C:/') #Specifies where to save the file
+os.chdir('C:/') #Specifies where to save the file 
 # Create a workbook and add a worksheet.
 workbook = xlsxwriter.Workbook('sentinel123.xlsx')
 worksheet = workbook.add_worksheet()
 
 # Sets heading to columns
 worksheet.write(0, 0, 'Name') # (row, col, data)
-
 worksheet.write(0, 1, 'ID')
 worksheet.write(0, 2, 'URI') # (row, col, data)
 worksheet.write(0, 3, 'Clouds')
@@ -123,5 +122,5 @@ for index, member in enumerate(id):
      worksheet.write(index+1, 7,genTime[index])
      worksheet.write(index+1, 8,zenithAngle[index])
      worksheet.write(index+1, 9,azimuthAngle[index])
-
+     print index+1
 workbook.close()
